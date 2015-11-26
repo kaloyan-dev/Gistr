@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function redirectToProvider()
     {
         return Socialite::driver('github')
-            ->scopes( ['gists'] )
+            ->scopes( ['gist'] )
             ->redirect();
     }
 
@@ -45,17 +45,17 @@ class AuthController extends Controller
      */
     private function findOrCreateUser($githubUser)
     {
-
-        if ($authUser = User::where('github_id', $githubUser->id)->first()) {
-            return $authUser;
-        }
-
-        return User::create([
+        $user = User::firstOrCreate(['github_id'  => $githubUser->id])->fill([
+            'username'   => $githubUser->user['login'],
             'name'       => $githubUser->name,
             'email'      => $githubUser->email,
             'github_id'  => $githubUser->id,
             'avatar'     => $githubUser->avatar,
             'auth_token' => $githubUser->token,
         ]);
+
+        $user->save();
+
+        return $user;
     }
 }

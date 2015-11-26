@@ -17,11 +17,12 @@ class CreateUsersTable extends Migration
 
             // Cached from GitHub
             $table->string('github_id')->unique();
+            $table->string('username');
             $table->string('name');
             $table->string('email');
             $table->string('avatar');
             $table->string('auth_token');
-
+            $table->longText('gists');
             $table->rememberToken();
             $table->timestamps();
         });
