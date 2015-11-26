@@ -144,7 +144,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Artdarek\OAuth\OAuthServiceProvider::class,
+
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -195,7 +196,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'OAuth' => Artdarek\OAuth\Facade\OAuth:class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
