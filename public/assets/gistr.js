@@ -69,7 +69,7 @@
 			},
 
 			updateGists: function( fetch ) {
-				this.$http.post( '/gists', { gists: this.gists_data }, function(data) {
+				this.$http.post( 'gists', { gists: this.gists_data }, function(data) {
 
 				}, {
 					emulateJSON: true
