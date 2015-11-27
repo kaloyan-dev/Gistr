@@ -23,6 +23,20 @@ class PagesController extends Controller
 
 		$user = Auth::user();
 
+		return view( 'home' )->with( array(
+			'user' => $user,
+		) );
+
+	}
+
+	public function fetch() {
+
+		if ( ! Auth::check() ) {
+			return [];
+		}
+
+		$user = Auth::user();
+
 		$gists_data = $user->gists;
 
 		if ( ! $gists_data ) {
@@ -32,11 +46,6 @@ class PagesController extends Controller
 			$gists = $githubClient->api('gists')->all();
 
 			foreach ( $gists as $gist ) {
-				$script_url = 'http://gist.github.com/' . $user->username . '/' . $gist['id'] . '.js';
-				$search     = array( '\n', '\\', 'document.write(', ')' );
-				$contents   = file_get_contents( $script_url );
-				$stripped   = str_replace( $search, '', $contents );
-
 				$gists_data[] = array(
 					'name'      => array_values( $gist['files'] )[0]['filename'],
 					'id'        => $gist['id'],
@@ -44,18 +53,16 @@ class PagesController extends Controller
 					'expanded'  => 0,
 					'favorited' => 0,
 					'folders'   => [],
-					'code'      => $stripped,
 				);
 			}
 
-			$gists_data = json_encode( $gists_data );
+			$gists_data  = json_encode( $gists_data );
 			$user->gists = $gists_data;
 			$user->save();
 		}
 
-		return view( 'home' )->with( array(
-			'gists_data' => $gists_data,
-			'user'       => $user,
-		) );
+		echo $gists_data;
+		
 	}
+
 }

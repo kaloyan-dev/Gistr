@@ -37,10 +37,71 @@ textarea { overflow: auto; }
 .gists-list { padding: 0 0 20px; }
 .gists-list li { position: relative; }
 .gists-list li + li { margin-top: 10px; }
-.gists-list li h3 { font-weight: normal; background: #f7f6f6; border: 1px solid #d9d9d9; padding: 8px 10px; cursor: pointer; margin-bottom: 4px; border-radius: 2px; }
+.gists-list li h3 { font-weight: normal; background: #f7f6f6; border: 1px solid #d9d9d9; padding: 8px 10px; cursor: pointer; margin-bottom: 4px; }
 .gists-list li h3 strong { background: #ffff00; }
 
 .gists-search { padding: 20px 0; }
-.gists-search input[type="text"] { border: 2px solid #d9d9d9; padding: 8px 10px; box-sizing: border-box; width: 100%; border-radius: 4px; }
+.gists-search input[type="text"] { border: 2px solid #d9d9d9; padding: 8px 10px; box-sizing: border-box; width: 100%; }
 
-.gist-content { font-size: 0; line-height: 0; }
+.gist-hidden { display: none; }
+
+/* Loader */
+.gists-loading { font-size: 0; line-height: 0; text-align: center; padding-top: 200px; }
+.gists-loading span,
+.gists-loading span em { width: 100px; height: 100px; border: solid 5px; border-color: #ccc #444; border-radius: 50%; display: inline-block; vertical-align: top; position: relative; }
+.gists-loading span em { position: absolute; top: 30px; left: 30px; width: 30px; height: 30px; border-color: #444 #ccc; }
+
+.gists-loading span {
+	-webkit-animation:  rotation 1s ease-in-out infinite;
+	-moz-animation: rotation 1s ease-in-out infinite;
+	-ms-animation: rotation 1s ease-in-out infinite;
+	-o-animation: rotation 1s ease-in-out infinite;
+	animation: rotation 1s ease-in-out infinite;
+}
+.gists-loading span em {
+	-webkit-animation:  rotation-reverse 1s ease-in-out infinite;
+	-moz-animation: rotation-reverse 1s ease-in-out infinite;
+	-ms-animation: rotation-reverse 1s ease-in-out infinite;
+	-o-animation: rotation-reverse 1s ease-in-out infinite;
+	animation: rotation-reverse 1s ease-in-out infinite;
+}
+
+@-webkit-keyframes rotation {
+	to { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes rotation {
+	to { -moz-transform: rotate(360deg); }
+}
+
+@-ms-keyframes rotation {
+	to { -ms-transform: rotate(360deg); }
+}
+
+@-o-keyframes rotation {
+	to { -o-transform: rotate(360deg); }
+}
+
+@keyframes rotation {
+	to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotation-reverse {
+	to { -webkit-transform: rotate(-720deg); }
+}
+
+@-moz-keyframes rotation-reverse {
+	to { -moz-transform: rotate(-720deg); }
+}
+
+@-ms-keyframes rotation-reverse {
+	to { -ms-transform: rotate(-720deg); }
+}
+
+@-o-keyframes rotation-reverse {
+	to { -o-transform: rotate(-720deg); }
+}
+
+@keyframes rotation-reverse {
+	to { transform: rotate(-720deg); }
+}
