@@ -57,6 +57,9 @@
 						</li>
 					</ul>
 				</div>
+				<div class="gist-pagination" v-if="showSearch">
+					<a v-for="n in maxPages" :class="( n + 1 ) === currentPage ? 'active' : ''" @click.prevent="setPage(n + 1)" href="#">@{{ n + 1 }}</a>
+				</div>
 			</div>
 		</div>
 	</div>

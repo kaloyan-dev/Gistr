@@ -7,18 +7,36 @@
 		el: '#gistr',
 
 		data: {
-			gists_data : {},
-			search     : '',
-			loading    : true,
-			favorites  : false,
+			gists_data  : {},
+			search      : '',
+			loading     : true,
+			favorites   : false,
+			currentPage : 1,
+			maxPages    : 1
 		},
 
 		computed: {
+			showSearch: function() {
+				var displaySearch = true;
 
+				if ( this.maxPages < 1 ) {
+					displaySearch = false;
+				}
+
+				if ( this.search !== '' && this.search !== ' ' ) {
+					displaySearch = false;
+				}
+
+				if ( this.favorites ) {
+					displaySearch = false;
+				}
+
+				return displaySearch;
+			}
 		},
 
 		ready: function() {
-			this.gists_data = this.fetchGists();
+			this.fetchGists();
 		},
 
 		methods: {
@@ -26,6 +44,21 @@
 				this.loading = true;
 
 				this.$http.get( '/gists', function ( data ) {
+
+					var gistIndex = 1;
+
+					for ( var gist in data ) {
+						
+						if ( gistIndex > 10 ) {
+							this.maxPages++;
+							gistIndex = 1;
+						}
+
+						data[gist].page = this.maxPages;
+
+						gistIndex++;
+					}
+
 					this.gists_data = data;
 					this.loading    = false;
 
@@ -41,6 +74,10 @@
 				}, {
 					emulateJSON: true
 				} );
+			},
+
+			setPage: function( page ) {
+				this.currentPage = page;
 			},
 
 			toggleFavorites: function() {
@@ -84,6 +121,12 @@
 
 				if ( this.favorites && gist.favorited == 0 ) {
 					gistClass = 'gist-hidden';
+				}
+
+				if ( ( this.search === '' || this.search === ' ' ) && ! this.favorites ) {
+					if ( this.currentPage !== gist.page ) {
+						gistClass = 'gist-hidden';
+					}
 				}
 
 				return gistClass;

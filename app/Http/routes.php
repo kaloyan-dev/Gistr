@@ -17,3 +17,4 @@ Route::post('/gists', 'PagesController@updateGists');
 
 Route::get('auth/github', [ 'as' => 'github-login', 'uses' => 'Auth\AuthController@redirectToProvider' ] );
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
+Route::get('auth/logout', 'Auth\AuthController@logout' );
