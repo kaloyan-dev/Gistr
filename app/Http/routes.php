@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'PagesController@index');
-Route::get('/fetch-gists', 'PagesController@fetch');
+Route::get('/gists', 'PagesController@fetchGists');
+Route::post('/gists', 'PagesController@updateGists');
 
 Route::get('auth/github', [ 'as' => 'github-login', 'uses' => 'Auth\AuthController@redirectToProvider' ] );
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');

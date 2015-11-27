@@ -1,5 +1,7 @@
 ;(function() {
 
+	Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf_token').getAttribute('value');
+
 	new Vue({
 
 		el: '#gistr',
@@ -7,7 +9,12 @@
 		data: {
 			gists_data : {},
 			search     : '',
-			loading    : true
+			loading    : true,
+			favorites  : false,
+		},
+
+		computed: {
+
 		},
 
 		ready: function() {
@@ -16,7 +23,7 @@
 
 		methods: {
 			fetchGists: function() {
-				this.$http.get( '/fetch-gists', function ( data ) {
+				this.$http.get( '/gists', function ( data ) {
 					this.gists_data = data;
 					this.loading    = false;
 
@@ -26,20 +33,35 @@
 				});
 			},
 
+			updateGists: function( fetch ) {
+				this.$http.post( '/gists', { gists: this.gists_data }, function(data) {
+
+				}, {
+					emulateJSON: true
+				} );
+			},
+
+			toggleFavorites: function() {
+				this.favorites = ! this.favorites;
+			},
+
 			toggleCode: function(gist) {
-				gist.expanded = ! gist.expanded;
+				gist.expanded = ( gist.expanded == 1 ) ? 0 : 1;
+			},
+
+			favoriteGist: function(gist) {
+				gist.favorited = ( gist.favorited == 1 ) ? 0 : 1;
+				this.updateGists();
 			},
 
 			gistName: function(gist) {
 				var gistName = gist.name;
 
-				if ( this.search !== '' ) {
-					var searchRegExp = new RegExp( '(' + this.search + ')', 'gi' );
-					var strongRegExp = new RegExp( '<strong></strong>', 'gi' );
+				if ( this.search !== '' && this.search !== ' ' ) {
+					var searchQuery  = this.search.trim();
+					var searchRegExp = new RegExp( '(' + searchQuery + ')', 'gi' );
 					
-					var highlighted  = gist.name.replace( searchRegExp, '<strong>$1</strong>' );
-
-					gistName = highlighted.replace( strongRegExp, '' );					
+					gistName = gistName.replace( searchRegExp, '<strong>$1</strong>' );
 				}
 
 				return gistName;
@@ -49,12 +71,17 @@
 				var gistClass = '';
 				var gistName  = gist.name;
 
-				if ( this.search !== '' ) {
-					var isMatching = gistName.match( new RegExp( this.search, 'gi' ) );
+				if ( this.search !== '' && this.search !== ' ' ) {
+					var searchQuery = this.search.trim();
+					var isMatching  = gistName.match( new RegExp( searchQuery, 'gi' ) );
 
 					if ( ! isMatching ) {
 						gistClass = 'gist-hidden';
 					}
+				}
+
+				if ( this.favorites && gist.favorited == 0 ) {
+					gistClass = 'gist-hidden';
 				}
 
 				return gistClass;
