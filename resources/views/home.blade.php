@@ -3,13 +3,12 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Gistr</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{ asset( 'assets/css/gistr.css' ) }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{ asset( 'assets/css/gist.css' ) }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ asset( 'assets/gistr.css' ) }}" type="text/css" media="all" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset( 'assets/favicon.ico' ) }}" />
 
-	<script type="text/javascript" src="{{ asset( 'assets/js/jquery-2.1.4.min.js' ) }}"></script>
-	<script type="text/javascript" src="{{ asset( 'assets/js/gist-embed.min.js' ) }}"></script>
+	<script type="text/javascript" src="{{ asset( 'assets/vendor/jquery/jquery-2.1.4.min.js' ) }}"></script>
+	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
 <body id="gistr">
 	<div class="header">
@@ -51,8 +50,8 @@
 		</div>
 	</div>
 
-	<script src="{{ asset( 'assets/js/vue.min.js' ) }}" type="text/javascript"></script>
-	<script src="{{ asset( 'assets/js/vue-resource.min.js' ) }}" type="text/javascript"></script>
-	<script src="{{ asset( 'assets/js/gistr.js' ) }}" type="text/javascript"></script>
+	<script src="{{ asset( 'assets/vendor/vue/vue.min.js' ) }}" type="text/javascript"></script>
+	<script src="{{ asset( 'assets/vendor/vue/vue-resource.min.js' ) }}" type="text/javascript"></script>
+	<script src="{{ asset( 'assets/gistr.js' ) }}" type="text/javascript"></script>
 </body>
 </html>
