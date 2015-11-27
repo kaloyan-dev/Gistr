@@ -14,15 +14,19 @@
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
 <body id="gistr">
+	@if ( $user )
 	<div class="header">
 		<div class="shell">
 			<div class="user-meta">
 				<div class="user-image">
-					<img src="{{ $user->avatar }}" alt="" />
+					<a href="https://gist.github.com/{{ $user->username }}" target="_blank">
+						<img src="{{ $user->avatar }}" alt="" />						
+					</a>
 				</div>
 				<div class="user-name">
 					<h2>{{ $user->name }}</h2>
 					<h3>{{ $user->username }}</h3>
+					<h4><a href="auth/logout">Logout</a></h4>
 				</div>
 			</div>
 		</div>
@@ -67,5 +71,13 @@
 	<script src="{{ asset( 'assets/vendor/vue/vue.min.js' ) }}" type="text/javascript"></script>
 	<script src="{{ asset( 'assets/vendor/vue/vue-resource.min.js' ) }}" type="text/javascript"></script>
 	<script src="{{ asset( 'assets/gistr.js' ) }}" type="text/javascript"></script>
+	@else
+		<div class="shell">
+			<div class="github-login">
+				<img src="{{ asset( 'assets/iron-octo-cat.png' ) }}" alt="" title="It is an octo-cat in an iron man suit with the 2create logo on his forehead, yes" />
+				<a href="/auth/github"><span class="fa fa-github"></span>Login with GitHub</a>
+			</div>
+		</div>
+	@endif
 </body>
 </html>

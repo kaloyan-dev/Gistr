@@ -16,11 +16,12 @@ class PagesController extends Controller
 	
 	public function index() {
 
-		if ( ! Auth::check() ) {
-			return redirect()->route( 'github-login' );
+		$user = [];
+
+		if ( Auth::check() ) {
+			$user = Auth::user();
 		}
 
-		$user = Auth::user();
 
 		return view( 'home' )->with( array(
 			'user' => $user,
