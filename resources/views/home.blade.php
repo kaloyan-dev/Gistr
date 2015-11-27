@@ -75,7 +75,7 @@
 		<div class="shell">
 			<div class="github-login">
 				<img src="{{ asset( 'assets/iron-octo-cat.png' ) }}" alt="" title="It is an octo-cat in an iron man suit with the 2create logo on his forehead, yes" />
-				<a href="/auth/github"><span class="fa fa-github"></span>Login with GitHub</a>
+				<a href="auth/github"><span class="fa fa-github"></span>Login with GitHub</a>
 			</div>
 		</div>
 	@endif

@@ -43,7 +43,7 @@
 			fetchGists: function( fetch ) {
 				this.loading = true;
 
-				this.$http.get( '/gists', function ( data ) {
+				this.$http.get( 'gists', function ( data ) {
 
 					var gistIndex = 1;
 
