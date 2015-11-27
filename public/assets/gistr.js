@@ -106,30 +106,30 @@
 				return gistName;
 			},
 
-			gistHidden: function(gist) {
-				var gistClass = '';
-				var gistName  = gist.name;
+			gistShow: function(gist) {
+				var showGist = true;
+				var gistName = gist.name;
 
 				if ( this.search !== '' && this.search !== ' ' ) {
 					var searchQuery = this.search.trim();
 					var isMatching  = gistName.match( new RegExp( searchQuery, 'gi' ) );
 
 					if ( ! isMatching ) {
-						gistClass = 'gist-hidden';
+						showGist = false;
 					}
 				}
 
 				if ( this.favorites && gist.favorited == 0 ) {
-					gistClass = 'gist-hidden';
+					showGist = false;
 				}
 
 				if ( ( this.search === '' || this.search === ' ' ) && ! this.favorites ) {
 					if ( this.currentPage !== gist.page ) {
-						gistClass = 'gist-hidden';
+						showGist = false;
 					}
 				}
 
-				return gistClass;
+				return showGist;
 			}
 		}
 	});

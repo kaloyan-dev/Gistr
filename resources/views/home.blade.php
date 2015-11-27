@@ -48,7 +48,7 @@
 				</div>
 				<div class="gist-list">
 					<ul>
-						<li v-for="gist in gists_data" :class="gistHidden( gist )">
+						<li v-for="gist in gists_data" v-show="gistShow( gist )">
 							<h3 @click="toggleCode(gist)">
 								@{{{ gistName(gist) }}}
 								<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
