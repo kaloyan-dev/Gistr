@@ -40,6 +40,8 @@ textarea { overflow: auto; }
 .gist-buttons { padding-bottom: 20px; font-size: 0; line-height: 0; }
 .gist-buttons a { display: inline-block; vertical-align: top; color: #000; text-decoration: none; border: 1px solid #d9d9d9; padding: 8px 10px; font-size: 14px; line-height: 18px; }
 .gist-buttons a.active { background: #f7f6f6; }
+.gist-buttons a.active span { color: #6dcff6; }
+.gist-buttons a + a { margin-left: 20px; }
 
 .gist-list { padding: 0 0 20px; }
 .gist-list li { position: relative; }

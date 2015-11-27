@@ -30,28 +30,43 @@ class PagesController extends Controller
 
 	public function fetch( $user ) {
 
-		$gists_data = $user->gists;
+		$gists_data = [];
+		$gists_user = json_decode( $user->gists );
 
-		if ( ! $gists_data ) {
-			$githubClient = new Client();
-			$githubClient->authenticate( $user->auth_token, '', $githubClient::AUTH_HTTP_TOKEN );
+		$githubClient = new Client();
+		$githubClient->authenticate( $user->auth_token, '', $githubClient::AUTH_HTTP_TOKEN );
 
-			$gists = $githubClient->api('gists')->all();
+		$gists = $githubClient->api('gists')->all();
 
-			foreach ( $gists as $gist ) {
-				$gists_data[] = array(
-					'name'      => array_values( $gist['files'] )[0]['filename'],
-					'id'        => $gist['id'],
-					'expanded'  => 0,
-					'favorited' => 0,
-					'folders'   => [],
-				);
+		foreach ( $gists as $gist ) {
+			$expanded  = 0;
+			$favorited = 0;
+			$folders   = [];
+
+			if ( $gists_user && is_array( $gists_user ) ) {
+				foreach ( $gists_user as $gist_user ) {
+					$gist_user = (array) $gist_user;
+
+					if ( $gist_user['id'] === $gist['id'] ) {
+						$expanded  = $gist_user['expanded'];
+						$favorited = $gist_user['favorited'];
+						$folders   = isset( $gist_user['folders'] ) ? $gist_user['folders'] : [];
+					}
+				}				
 			}
 
-			$gists_data  = json_encode( $gists_data );
-			$user->gists = $gists_data;
-			$user->save();
+			$gists_data[] = array(
+				'name'      => array_values( $gist['files'] )[0]['filename'],
+				'id'        => $gist['id'],
+				'expanded'  => $expanded,
+				'favorited' => $favorited,
+				'folders'   => $folders,
+			);
 		}
+
+		$gists_data  = json_encode( $gists_data );
+		$user->gists = $gists_data;
+		$user->save();
 
 		return $gists_data;
 	}

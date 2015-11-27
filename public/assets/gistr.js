@@ -22,7 +22,9 @@
 		},
 
 		methods: {
-			fetchGists: function() {
+			fetchGists: function( fetch ) {
+				this.loading = true;
+
 				this.$http.get( '/gists', function ( data ) {
 					this.gists_data = data;
 					this.loading    = false;
@@ -30,7 +32,7 @@
 					setTimeout(function() {
 						jQuery('code[data-gist-id]').gist();
 					}, 0);
-				});
+				} );
 			},
 
 			updateGists: function( fetch ) {

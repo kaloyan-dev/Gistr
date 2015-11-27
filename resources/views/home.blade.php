@@ -36,11 +36,11 @@
 			<div v-show="! loading" class="gists-wrapper">
 				<div class="gist-search">
 					<form action="" method="get">
-						<input type="text" v-model="search" placeholder="Filter By Name" />
+						<input type="text" v-model="search" placeholder="Filter by name" />
 					</form>
 				</div>
 				<div class="gist-buttons">
-					<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites">Toggle Favorites</a>
+					<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
 				</div>
 				<div class="gist-list">
 					<ul>
