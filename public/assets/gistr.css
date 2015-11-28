@@ -8,6 +8,7 @@ body {
 	font-family: 'Open Sans', arial, helvetica, sans-serif;
 	color: #000;
 	background: #fff;
+	overflow-y: scroll;
 }
 
 a { color: #0252aa; text-decoration: none; cursor: pointer; }
