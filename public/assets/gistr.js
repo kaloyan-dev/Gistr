@@ -16,22 +16,22 @@
 		},
 
 		computed: {
-			showSearch: function() {
-				var displaySearch = true;
+			showPagination: function() {
+				var displayPagination = true;
 
 				if ( this.maxPages < 1 ) {
-					displaySearch = false;
+					displayPagination = false;
 				}
 
 				if ( this.search !== '' && this.search !== ' ' ) {
-					displaySearch = false;
+					displayPagination = false;
 				}
 
 				if ( this.favorites ) {
-					displaySearch = false;
+					displayPagination = false;
 				}
 
-				return displaySearch;
+				return displayPagination;
 			}
 		},
 
@@ -40,7 +40,7 @@
 		},
 
 		methods: {
-			fetchGists: function( fetch ) {
+			fetchGists: function() {
 				this.loading = true;
 
 				this.$http.get( 'gists', function ( data ) {
@@ -68,7 +68,7 @@
 				} );
 			},
 
-			updateGists: function( fetch ) {
+			updateGists: function() {
 				this.$http.post( 'gists', { gists: this.gists_data }, function(data) {
 
 				}, {
