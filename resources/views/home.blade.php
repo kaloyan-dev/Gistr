@@ -44,6 +44,7 @@
 					</form>
 				</div>
 				<div class="gist-buttons">
+					<a href="https://gist.github.com/" target="_blank"><span class="fa fa-plus"></span> New Gist</a>
 					<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
 				</div>
 				<div class="gist-list">
@@ -53,6 +54,9 @@
 								@{{{ gistName(gist) }}}
 								<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
 									<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
+								</a>
+								<a class="gist-edit" @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
+									<span class="fa fa-pencil"></span>
 								</a>
 							</h3>
 							<div class="gist-content" v-show="gist.expanded == 1">

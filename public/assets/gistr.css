@@ -58,9 +58,10 @@ textarea { overflow: auto; }
 .gist-list li { position: relative; margin-bottom: 10px; }
 .gist-list li h3 { font-weight: normal; background: #f7f6f6; border: 1px solid #d9d9d9; padding: 8px 30px 8px 10px; cursor: pointer; margin-bottom: 4px; position: relative; }
 .gist-list li h3 strong { background: #6dcff6; border-radius: 2px; }
-.gist-list li h3 a { position: absolute; top: 8px; right: 8px; font-size: 18px; line-height: 20px; }
-.gist-list li h3 a.gist-favorite { color: #999; }
+.gist-list li h3 a { position: absolute; top: 8px; font-size: 18px; line-height: 20px; }
+.gist-list li h3 a.gist-favorite { color: #999; right: 8px; }
 .gist-list li h3 a.gist-favorited { color: #6dcff6; }
+.gist-list li h3 a.gist-edit { color: #999; right: 40px; }
 
 .gist-pagination { font-size: 0; line-height: 0; margin: 0 -5px; }
 .gist-pagination a { display: inline-block; vertical-align: top; color: #000; font-size: 14px; line-height: 18px; min-width: 18px; padding: 5px; border: 1px solid #d9d9d9; text-align: center; text-decoration: none; margin: 0 5px 10px; }
