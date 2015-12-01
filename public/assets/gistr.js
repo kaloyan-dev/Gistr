@@ -40,8 +40,17 @@
 		},
 
 		methods: {
+			reset: function() {
+				this.gists_data  = {};
+				this.search      = '';
+				this.loading     = true;
+				this.favorites   = false;
+				this.currentPage = 1;
+				this.maxPages    = 1;
+			},
+
 			fetchGists: function() {
-				this.loading = true;
+				this.reset();
 
 				this.$http.get( 'gists', function ( data ) {
 

@@ -45,6 +45,7 @@
 				</div>
 				<div class="gist-buttons">
 					<a href="https://gist.github.com/" target="_blank"><span class="fa fa-plus"></span> New Gist</a>
+					<a href="#" @click.prevent="fetchGists"><span class="fa fa-refresh"></span> Reload Gists</a>
 					<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
 				</div>
 				<div class="gist-list">
