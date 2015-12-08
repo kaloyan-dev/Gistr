@@ -97,6 +97,12 @@
 				gist.expanded = ( gist.expanded == 1 ) ? 0 : 1;
 			},
 
+			copyGist: function(gist, username) {
+				var gistURL = 'https://gist.github.com/' + username + '/' + gist.id;
+
+				window.prompt( 'Gist URL:', gistURL );
+			},
+
 			favoriteGist: function(gist) {
 				gist.favorited = ( gist.favorited == 1 ) ? 0 : 1;
 				this.updateGists();

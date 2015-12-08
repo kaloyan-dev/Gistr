@@ -56,6 +56,9 @@
 								<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
 									<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
 								</a>
+								<a class="gist-copy" href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
+									<span class="fa fa-clipboard"></span>
+								</a>
 								<a class="gist-edit" @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
 									<span class="fa fa-pencil"></span>
 								</a>
