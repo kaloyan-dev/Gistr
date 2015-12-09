@@ -9,7 +9,6 @@ Its purpose is to provide slightly better gist management which currently includ
 
 Planned features:
 
-* quick-copying of gist URL to clipboard
 * adding gists to folders
 * adding/editing/deleting gists using the application interface
 * API-like interface for easier retrieval of secret gists (without OAuth)
