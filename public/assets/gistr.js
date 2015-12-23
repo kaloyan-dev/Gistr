@@ -86,6 +86,14 @@
 			},
 
 			setPage: function( page ) {
+				if ( page < 1 ) {
+					page = this.maxPages;
+				}
+
+				if ( page > this.maxPages ) {
+					page = 1;
+				}
+
 				this.currentPage = page;
 			},
 

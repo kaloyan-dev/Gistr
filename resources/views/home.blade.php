@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/jquery/jquery-2.1.4.min.js' ) }}"></script>
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
-<body id="gistr">
+<body id="gistr" :class="{ 'no-stripes' : search || favorites }">
 	@if ( $user )
 	<div class="header">
 		<div class="shell">
@@ -70,7 +70,9 @@
 					</ul>
 				</div>
 				<div class="gist-pagination" v-if="showPagination">
+					<a @click.prevent="setPage(currentPage - 1)" href="#"><em class="fa fa-angle-left"></em></a>
 					<a v-for="n in maxPages" :class="( n + 1 ) === currentPage ? 'active' : ''" @click.prevent="setPage(n + 1)" href="#">@{{ n + 1 }}</a>
+					<a @click.prevent="setPage(currentPage + 1)" href="#"><em class="fa fa-angle-right"></em></a>
 				</div>
 			</div>
 		</div>
