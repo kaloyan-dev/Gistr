@@ -126,7 +126,7 @@
 					gistName = gistName.replace( searchRegExp, '<strong>$1</strong>' );
 				}
 
-				return gistName;
+				return gistName.substr( 0, gistName.lastIndexOf('.') ) || gistName;
 			},
 
 			gistShow: function(gist) {
