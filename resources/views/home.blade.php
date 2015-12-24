@@ -51,8 +51,11 @@
 				<div class="gist-list">
 					<ul>
 						<li v-for="gist in gists_data" v-show="gistShow( gist )">
-							<h3 @click="toggleCode(gist)">
+							<h3>
 								@{{{ gistName(gist) }}}
+								<a class="gist-view @{{ gist.expanded ? 'active' : '' }}" @click.prevent="toggleCode(gist)" href="#">
+									<span class="fa fa-eye"></span>
+								</a>
 								<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
 									<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
 								</a>
