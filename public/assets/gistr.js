@@ -58,7 +58,7 @@
 
 					for ( var gist in data ) {
 						
-						if ( gistIndex > 10 ) {
+						if ( gistIndex > 20 ) {
 							this.maxPages++;
 							gistIndex = 1;
 						}
