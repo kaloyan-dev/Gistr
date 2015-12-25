@@ -37,7 +37,7 @@ class PagesController extends Controller
 		$githubClient = new Client();
 		$githubClient->authenticate( $user->auth_token, '', $githubClient::AUTH_HTTP_TOKEN );
 
-		$gists = $githubClient->api('gists')->all();
+		$gists = $githubClient->api('gists')->setPerPage(9999)->all();
 
 		foreach ( $gists as $gist ) {
 			$expanded  = 0;
