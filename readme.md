@@ -17,6 +17,3 @@ Planned features:
 ## Live Demo
 
 A live demo of the application can be found at [http://codepeace.net/gistr/](http://codepeace.net/gistr/) (requires GitHub login only).
-
-## Screenshot
-![Gistr](http://i.imgur.com/01zjKTB.png)
