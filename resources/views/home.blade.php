@@ -15,75 +15,58 @@
 </head>
 <body id="gistr" :class="{ 'no-stripes' : search || favorites }">
 	@if ( $user )
-	<div class="header">
-		<div class="shell">
-			<div class="user-meta">
-				<div class="user-image">
-					<a href="https://gist.github.com/{{ $user->username }}" target="_blank">
-						<img src="{{ $user->avatar }}" alt="" />						
-					</a>
+		<div class="main">
+			<div class="shell">
+				<div v-show="loading" class="gists-loading">
+					<span><em></em></span>
 				</div>
-				<div class="user-name">
-					<h2>{{ $user->name }}</h2>
-					<h3>{{ $user->username }}</h3>
-					<h4><a href="auth/logout">Logout</a></h4>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="main">
-		<div class="shell">
-			<div v-show="loading" class="gists-loading">
-				<span><em></em></span>
-			</div>
-			<div v-show="! loading" class="gists-wrapper">
-				<div class="gist-search">
-					<form action="" method="get">
-						<input type="text" v-model="search" placeholder="Filter by name" />
-					</form>
-				</div>
-				<div class="gist-buttons">
-					<a href="https://gist.github.com/" target="_blank"><span class="fa fa-plus"></span> New Gist</a>
-					<a href="#" @click.prevent="fetchGists"><span class="fa fa-refresh"></span> Reload Gists</a>
-					<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
-				</div>
-				<div class="gist-list">
-					<ul>
-						<li v-for="gist in gists_data" v-show="gistShow( gist )">
-							<h3>
-								@{{{ gistName(gist) }}}
-								<a class="gist-view @{{ gist.expanded ? 'active' : '' }}" @click.prevent="toggleCode(gist)" href="#">
-									<span class="fa fa-eye"></span>
-								</a>
-								<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
-									<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
-								</a>
-								<a class="gist-copy" href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
-									<span class="fa fa-clipboard"></span>
-								</a>
-								<a class="gist-edit" @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</h3>
-							<div class="gist-content" v-show="gist.expanded == 1">
-								 <code data-gist-id="@{{ gist.id }}"></code>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="gist-pagination" v-if="showPagination">
-					<a @click.prevent="setPage(currentPage - 1)" href="#"><em class="fa fa-angle-left"></em></a>
-					<a v-for="n in maxPages" :class="( n + 1 ) === currentPage ? 'active' : ''" @click.prevent="setPage(n + 1)" href="#">@{{ n + 1 }}</a>
-					<a @click.prevent="setPage(currentPage + 1)" href="#"><em class="fa fa-angle-right"></em></a>
+				<div v-show="! loading" class="gists-wrapper">
+					<div class="gist-search">
+						<form action="" method="get">
+							<input type="text" v-model="search" placeholder="Filter by name" />
+						</form>
+					</div>
+					<div class="gist-buttons">
+						<a href="https://gist.github.com/" target="_blank"><span class="fa fa-plus"></span> New Gist</a>
+						<a href="#" @click.prevent="fetchGists"><span class="fa fa-refresh"></span> Reload Gists</a>
+						<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
+					</div>
+					<div class="gist-list">
+						<ul>
+							<li v-for="gist in gists_data" v-show="gistShow( gist )">
+								<h3>
+									@{{{ gistName(gist) }}}
+									<a class="gist-view @{{ gist.expanded ? 'active' : '' }}" @click.prevent="toggleCode(gist)" href="#">
+										<span class="fa fa-eye"></span>
+									</a>
+									<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
+										<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
+									</a>
+									<a class="gist-copy" href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
+										<span class="fa fa-clipboard"></span>
+									</a>
+									<a class="gist-edit" @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
+										<span class="fa fa-pencil"></span>
+									</a>
+								</h3>
+								<div class="gist-content" v-show="gist.expanded == 1">
+									 <code data-gist-id="@{{ gist.id }}"></code>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="gist-pagination" v-if="showPagination">
+						<a @click.prevent="setPage(currentPage - 1)" href="#"><em class="fa fa-angle-left"></em></a>
+						<a v-for="n in maxPages" :class="( n + 1 ) === currentPage ? 'active' : ''" @click.prevent="setPage(n + 1)" href="#">@{{ n + 1 }}</a>
+						<a @click.prevent="setPage(currentPage + 1)" href="#"><em class="fa fa-angle-right"></em></a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<script src="{{ asset( 'assets/vendor/vue/vue.min.js' ) }}" type="text/javascript"></script>
-	<script src="{{ asset( 'assets/vendor/vue/vue-resource.min.js' ) }}" type="text/javascript"></script>
-	<script src="{{ asset( 'assets/gistr.js' ) }}" type="text/javascript"></script>
+		<script src="{{ asset( 'assets/vendor/vue/vue.min.js' ) }}" type="text/javascript"></script>
+		<script src="{{ asset( 'assets/vendor/vue/vue-resource.min.js' ) }}" type="text/javascript"></script>
+		<script src="{{ asset( 'assets/gistr.js' ) }}" type="text/javascript"></script>
 	@else
 		<div class="shell">
 			<div class="github-login">
