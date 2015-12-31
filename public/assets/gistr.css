@@ -63,7 +63,7 @@ textarea { overflow: auto; }
 
 .gist-list { padding: 0 0 10px; }
 .gist-list li { position: relative; }
-.gist-list li h3 { font-weight: normal; background: #fff; border-top: 1px solid #d9d9d9; padding: 8px 30px 8px 10px; position: relative; }
+.gist-list li h3 { font-weight: normal; background: #fff; border-top: 1px solid #d9d9d9; padding: 8px 130px 8px 10px; position: relative; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .gist-list li:nth-child(odd) h3 { background: #f9f9f9; }
 .no-stripes .gist-list li h3 { background: #fff; }
 .gist-list li h3 strong { color: #fff; background: #6dcff6; border-radius: 2px; }
@@ -146,4 +146,15 @@ textarea { overflow: auto; }
 
 @keyframes rotation-reverse {
 	to { transform: rotate(-720deg); }
+}
+
+@media screen and (max-width: 768px) {
+	.main { padding: 0; }
+	.sidebar { position: static; width: auto; border-right: 0; border-bottom: 1px solid #e7e7e7; }
+	.content { padding-top: 20px; }
+}
+
+@media screen and (max-width: 480px) {
+	.gist-buttons a { display: block; }
+	.gist-buttons a + a { margin: 10px 0 0 0; }
 }
