@@ -26,6 +26,11 @@ textarea { overflow: auto; }
 
 .shell { max-width: 960px; margin: 0 auto; padding: 0 10px; }
 
+.main { position: relative; padding: 20px 20px 0 260px; }
+.main:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.content { padding: 0 20px; }
+.sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 220px; padding: 20px; background: #f8f8f8; border-right: 1px solid #e7e7e7; }
+
 .github-login { max-width: 500px; text-align: center; padding: 20px 0; margin: 0 auto; }
 .github-login img { max-width: 100%; height: auto; }
 .github-login a { display: block; color: #fff; background: #000; margin: 20px 20px 0; font-size: 24px; line-height: 40px; padding: 10px 0; border-radius: 8px; text-decoration: none; transition: background 0.3s; }
@@ -35,17 +40,17 @@ textarea { overflow: auto; }
 .header { background: #f9f9f9; border-bottom: 2px solid #000; box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); padding: 10px 0; }
 .header .shell { padding: 10px; background: url('iron-octo-cat.png') right center no-repeat; background-size: auto 60px; }
 .user-meta { overflow: hidden; }
-.user-image { float: left; margin-right: 10px; }
+.user-image {  }
 .user-image a { display: block; }
-.user-image img { display: block; width: 60px; height: 60px; border-radius: 4px; }
-.user-name { overflow: hidden; }
+.user-image img { display: block; width: 220px; height: 220px; border-radius: 4px; margin: 0 auto; }
+.user-name { padding-top: 20px; max-width: 220px; margin: 0 auto; }
 .user-name h2 { color: #333; }
 .user-name h3 { color: #777; font-weight: 400; }
-.user-name h4 { padding-top: 4px; }
-.user-name h4 a { color: #af0000; border-bottom: 1px dotted #af0000; display: inline-block; vertical-align: top; }
+.user-name h4 { padding-top: 10px; }
+.user-name h4 a { color: #af0000; background: #fff; display: block; vertical-align: top; border: 1px solid #d9d9d9; padding: 5px 10px; font-weight: normal; text-align: center; text-transform: uppercase; }
 .user-name h4 a:hover { text-decoration: none; }
 
-.gist-search { padding: 20px 0 10px; }
+.gist-search { padding: 0 0 10px; }
 .gist-search input[type="text"] { border: 1px solid #d9d9d9; padding: 8px 10px; box-sizing: border-box; width: 100%; font-size: 14px; }
 .gist-search input[type="text"]:focus { color: #54acd0; border-color: #54acd0; }
 

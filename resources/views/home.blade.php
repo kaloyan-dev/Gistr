@@ -16,7 +16,22 @@
 <body id="gistr" :class="{ 'no-stripes' : search || favorites }">
 	@if ( $user )
 		<div class="main">
-			<div class="shell">
+			<div class="sidebar">
+				<div class="user-meta">
+					<div class="user-image">
+						<a href="https://gist.github.com/{{ $user->username }}" target="_blank">
+							<img src="{{ $user->avatar }}" alt="" />						
+						</a>
+					</div>
+					<div class="user-name">
+						<h2>{{ $user->name }}</h2>
+						<h3>{{ $user->username }}</h3>
+						<h4><a href="auth/logout">Logout</a></h4>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
 				<div v-show="loading" class="gists-loading">
 					<span><em></em></span>
 				</div>
