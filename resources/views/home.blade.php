@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=2.0" />
 	<meta id="csrf_token" value="{{ csrf_token() }}">
 
 	<title>Gistr</title>
