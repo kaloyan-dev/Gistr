@@ -152,6 +152,12 @@ textarea { overflow: auto; }
 	.main { padding: 0; }
 	.sidebar { position: static; width: auto; border-right: 0; border-bottom: 1px solid #e7e7e7; }
 	.content { padding-top: 20px; }
+	
+	.gists-loading { padding-top: 100px; }
+
+	.user-image { float: left; }
+	.user-image img { width: 77px; height: 77px; margin-right: 20px; }
+	.user-name { overflow: hidden; max-width: none; margin: 0; padding: 0; }
 }
 
 @media screen and (max-width: 480px) {
