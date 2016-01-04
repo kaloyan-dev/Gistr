@@ -49,7 +49,7 @@
 					</div>
 					<div class="gist-list">
 						<ul>
-							<li v-for="gist in gists_data" v-show="gistShow( gist )">
+							<li v-for="gist in gists_data" v-show="gistShow( gist )" @click.prevent="toggleCode(gist)">
 								<h3>
 									@{{{ gistName(gist) }}}
 									<a class="gist-view @{{ gist.expanded ? 'active' : '' }}" @click.prevent="toggleCode(gist)" href="#">
