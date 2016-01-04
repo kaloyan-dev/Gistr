@@ -68,13 +68,11 @@ textarea { overflow: auto; }
 .no-stripes .gist-list li h3 { background: #fff; }
 .gist-list li h3 strong { color: #fff; background: #6dcff6; border-radius: 2px; }
 .gist-list li h3 a { position: absolute; top: 8px; font-size: 18px; line-height: 20px; }
-.gist-list li h3 a.gist-view { color: #999; right: 104px; }
 .gist-list li h3 a.gist-edit { color: #999; right: 72px; }
 .gist-list li h3 a.gist-copy { color: #999; right: 40px; }
 .gist-list li h3 a.gist-favorite { color: #999; right: 8px; }
 
 .gist-list li h3 a.active,
-.gist-list li h3 a.gist-view:hover,
 .gist-list li h3 a.gist-edit:hover,
 .gist-list li h3 a.gist-copy:hover,
 .gist-list li h3 a.gist-favorite:hover,
