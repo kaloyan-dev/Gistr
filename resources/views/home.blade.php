@@ -62,7 +62,7 @@
 										<span class="fa fa-pencil"></span>
 									</a>
 								</h3>
-								<div class="gist-content" v-show="gist.expanded == 1">
+								<div class="gist-content" v-show="gist.expanded == 1" @click.stop>
 									 <code data-gist-id="@{{ gist.id }}"></code>
 								</div>
 							</li>
