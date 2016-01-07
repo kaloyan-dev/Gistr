@@ -7,12 +7,13 @@
 		el: '#gistr',
 
 		data: {
-			gists_data  : {},
-			search      : '',
-			loading     : true,
-			favorites   : false,
-			currentPage : 1,
-			maxPages    : 1
+			gists_data    : {},
+			search        : '',
+			loading       : true,
+			favorites     : false,
+			currentPage   : 1,
+			maxPages      : 1,
+			sidebarHidden : false
 		},
 
 		computed: {
@@ -95,6 +96,10 @@
 				}
 
 				this.currentPage = page;
+			},
+
+			toggleSidebar: function() {
+				this.sidebarHidden = ! this.sidebarHidden;
 			},
 
 			toggleFavorites: function() {

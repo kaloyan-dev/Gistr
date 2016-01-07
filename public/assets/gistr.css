@@ -26,10 +26,17 @@ textarea { overflow: auto; }
 
 .shell { max-width: 960px; margin: 0 auto; padding: 0 10px; }
 
-.main { position: relative; padding: 20px 20px 0 260px; }
+.main { position: relative; padding: 20px 20px 0 260px; transition: padding-left 0.2s; }
 .main:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.main.sidebar-hidden { padding-left: 20px; }
 .content { padding: 0 20px; }
-.sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 220px; padding: 20px; background: #f8f8f8; border-right: 1px solid #e7e7e7; }
+.sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 220px; padding: 20px; background: #f8f8f8; border-right: 1px solid #e7e7e7; transition: left 0.2s; z-index: 10; }
+.sidebar-hidden .sidebar { left: -260px; }
+
+.sidebar-toggle { position: absolute; top: 0; right: -1px; width: 20px; height: 20px; background: #fff; text-align: center; border: solid #e7e7e7; border-width: 0 0 1px 1px; color: #777; }
+.sidebar-toggle:hover { text-decoration: none; color: #6dcff6; }
+.sidebar-toggle span { display: block; font-size: 14px; line-height: 20px; }
+.sidebar-hidden .sidebar-toggle { right: -21px; border-width: 0 1px 1px 0; }
 
 .github-login { max-width: 500px; text-align: center; padding: 20px 0; margin: 0 auto; }
 .github-login img { max-width: 100%; height: auto; }
@@ -144,7 +151,10 @@ textarea { overflow: auto; }
 }
 
 @media screen and (max-width: 768px) {
-	.main { padding: 0; }
+	.main,
+	.main.sidebar-hidden { padding: 0; }
+	.sidebar-toggle { display: none; }
+
 	.sidebar { position: static; width: auto; border-right: 0; border-bottom: 1px solid #e7e7e7; }
 	.content { padding-top: 20px; }
 	

@@ -16,8 +16,11 @@
 </head>
 <body id="gistr" :class="{ 'no-stripes' : search || favorites }">
 	@if ( $user )
-		<div class="main">
+		<div class="main" :class="{ 'sidebar-hidden' : sidebarHidden }">
 			<div class="sidebar">
+				<a class="sidebar-toggle" href="#" @click.prevent="toggleSidebar">
+					<span class="fa" :class="{ 'fa-chevron-left' : ! sidebarHidden, 'fa-chevron-right' : sidebarHidden }"></span>
+				</a>
 				<div class="user-meta">
 					<div class="user-image">
 						<a href="https://gist.github.com/{{ $user->username }}" target="_blank">
