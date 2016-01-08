@@ -47,9 +47,8 @@ textarea { overflow: auto; }
 .header { background: #f9f9f9; border-bottom: 2px solid #000; box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); padding: 10px 0; }
 .header .shell { padding: 10px; background: url('iron-octo-cat.png') right center no-repeat; background-size: auto 60px; }
 .user-meta { overflow: hidden; }
-.user-image {  }
 .user-image a { display: block; }
-.user-image img { display: block; width: 220px; height: 220px; border-radius: 4px; margin: 0 auto; }
+.user-image img { display: block; width: 220px; height: 220px; margin: 0 auto; }
 .user-name { padding-top: 20px; max-width: 220px; margin: 0 auto; }
 .user-name h2 { color: #333; }
 .user-name h3 { color: #777; font-weight: 400; }
