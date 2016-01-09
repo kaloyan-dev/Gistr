@@ -17,6 +17,10 @@
 		},
 
 		computed: {
+			searchActive: function() {
+				return this.search.trim().length > 0;
+			},
+
 			showPagination: function() {
 				var displayPagination = true;
 
@@ -24,7 +28,7 @@
 					displayPagination = false;
 				}
 
-				if ( this.search !== '' && this.search !== ' ' ) {
+				if ( this.searchActive ) {
 					displayPagination = false;
 				}
 
@@ -124,7 +128,7 @@
 			gistName: function(gist) {
 				var gistName = gist.name;
 
-				if ( this.search !== '' && this.search !== ' ' ) {
+				if ( this.searchActive ) {
 					var searchQuery  = this.search.trim();
 					var searchRegExp = new RegExp( '(' + searchQuery + ')', 'gi' );
 					
@@ -138,7 +142,7 @@
 				var showGist = true;
 				var gistName = gist.name;
 
-				if ( this.search !== '' && this.search !== ' ' ) {
+				if ( this.searchActive ) {
 					var searchQuery = this.search.trim();
 					var isMatching  = gistName.match( new RegExp( searchQuery, 'gi' ) );
 
@@ -151,7 +155,7 @@
 					showGist = false;
 				}
 
-				if ( ( this.search === '' || this.search === ' ' ) && ! this.favorites ) {
+				if ( ! this.searchActive && ! this.favorites ) {
 					if ( this.currentPage !== gist.page ) {
 						showGist = false;
 					}
