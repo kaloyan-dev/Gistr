@@ -55,10 +55,10 @@
 							<li v-for="gist in gists_data" v-show="gistShow( gist )" @click.prevent="toggleCode(gist)">
 								<h3>@{{{ gistName(gist) }}}</h3>
 								<div class="gist-tools">
-									<a class="gist-edit" @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
+									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
 										<span class="fa fa-pencil"></span>
 									</a>
-									<a class="gist-copy" href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
+									<a href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
 										<span class="fa fa-clipboard"></span>
 									</a>
 									<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
