@@ -55,16 +55,16 @@
 							<li v-for="gist in gists_data" v-show="gistShow( gist )" @click.prevent="toggleCode(gist)">
 								<h3>@{{{ gistName(gist) }}}</h3>
 								<div class="gist-tools">
-									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}" target="_blank">
+									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}" target="_blank" title="View Gist">
 										<span class="fa fa-eye"></span>
 									</a>
-									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
+									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank" title="Edit Gist">
 										<span class="fa fa-pencil"></span>
 									</a>
-									<a href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )">
+									<a href="#" @click.prevent.stop="copyGist(gist, '{{ $user->username }}' )" title="Copy Gist URL">
 										<span class="fa fa-clipboard"></span>
 									</a>
-									<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)">
+									<a class="gist-favorite @{{ gist.favorited == 1 ? 'gist-favorited' : '' }}" href="#" @click.stop.prevent="favoriteGist(gist)" title="Favorite Gist">
 										<span class="fa @{{ gist.favorited == 1 ? 'fa-star' : 'fa-star-o' }}"></span>
 									</a>
 								</div>
