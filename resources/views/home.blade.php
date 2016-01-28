@@ -55,6 +55,9 @@
 							<li v-for="gist in gists_data" v-show="gistShow( gist )" @click.prevent="toggleCode(gist)">
 								<h3>@{{{ gistName(gist) }}}</h3>
 								<div class="gist-tools">
+									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}" target="_blank">
+										<span class="fa fa-eye"></span>
+									</a>
 									<a @click.stop="" href="https://gist.github.com/{{ $user->username }}/@{{ gist.id }}/edit" target="_blank">
 										<span class="fa fa-pencil"></span>
 									</a>
