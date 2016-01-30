@@ -14,12 +14,12 @@
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/jquery/jquery-2.1.4.min.js' ) }}"></script>
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
-<body id="gistr" :class="{ 'no-stripes' : search || favorites }">
+<body id="gistr" :class="{ 'no-stripes' : search || userSettings.favorites }">
 	@if ( $user )
-		<div class="main" :class="{ 'sidebar-hidden' : sidebarHidden }">
+		<div class="main" :class="{ 'sidebar-hidden' : ! userSettings.sidebar }">
 			<div class="sidebar">
 				<a class="sidebar-toggle" href="#" @click.prevent="toggleSidebar">
-					<span class="fa" :class="{ 'fa-chevron-left' : ! sidebarHidden, 'fa-chevron-right' : sidebarHidden }"></span>
+					<span class="fa" :class="{ 'fa-chevron-left' : userSettings.sidebar, 'fa-chevron-right' : ! userSettings.sidebar }"></span>
 				</a>
 				<div class="user-meta">
 					<div class="user-image">
@@ -48,7 +48,7 @@
 					<div class="gist-buttons">
 						<a href="https://gist.github.com/" target="_blank"><span class="fa fa-plus"></span> New Gist</a>
 						<a href="#" @click.prevent="fetchGists"><span class="fa fa-refresh"></span> Reload Gists</a>
-						<a href="#" :class="favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
+						<a href="#" :class="userSettings.favorites ? 'active' : ''" @click.prevent="toggleFavorites"><span class="fa fa-star"></span> Toggle Favorites</a>
 					</div>
 					<div class="gist-list">
 						<ul>

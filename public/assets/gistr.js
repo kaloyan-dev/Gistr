@@ -10,10 +10,12 @@
 			gists_data    : {},
 			search        : '',
 			loading       : true,
-			favorites     : false,
 			currentPage   : 1,
 			maxPages      : 1,
-			sidebarHidden : false
+			userSettings  : {
+				favorites : false,
+				sidebar   : true
+			}
 		},
 
 		computed: {
@@ -32,7 +34,7 @@
 					displayPagination = false;
 				}
 
-				if ( this.favorites ) {
+				if ( this.userSettings.favorites ) {
 					displayPagination = false;
 				}
 
@@ -46,12 +48,12 @@
 
 		methods: {
 			reset: function() {
-				this.gists_data  = {};
-				this.search      = '';
-				this.loading     = true;
-				this.favorites   = false;
-				this.currentPage = 1;
-				this.maxPages    = 1;
+				this.gists_data             = {};
+				this.search                 = '';
+				this.loading                = true;
+				this.userSettings.favorites = false;
+				this.currentPage            = 1;
+				this.maxPages               = 1;
 			},
 
 			fetchGists: function() {
@@ -103,11 +105,11 @@
 			},
 
 			toggleSidebar: function() {
-				this.sidebarHidden = ! this.sidebarHidden;
+				this.userSettings.sidebar = ! this.userSettings.sidebar;
 			},
 
 			toggleFavorites: function() {
-				this.favorites = ! this.favorites;
+				this.userSettings.favorites = ! this.userSettings.favorites;
 			},
 
 			toggleCode: function(gist) {
@@ -151,11 +153,11 @@
 					}
 				}
 
-				if ( this.favorites && gist.favorited == 0 ) {
+				if ( this.userSettings.favorites && gist.favorited == 0 ) {
 					showGist = false;
 				}
 
-				if ( ! this.searchActive && ! this.favorites ) {
+				if ( ! this.searchActive && ! this.userSettings.favorites ) {
 					if ( this.currentPage !== gist.page ) {
 						showGist = false;
 					}
