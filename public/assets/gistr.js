@@ -2,6 +2,7 @@
 
 	Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf_token').getAttribute('value');
 	Vue.http.options.emulateHTTP            = true;
+	Vue.http.options.emulateJSON            = true;
 
 	new Vue({
 
