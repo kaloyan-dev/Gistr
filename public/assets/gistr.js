@@ -1,6 +1,7 @@
 ;(function() {
 
 	Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf_token').getAttribute('value');
+	Vue.http.options.emulateHTTP            = true;
 
 	new Vue({
 
@@ -87,9 +88,7 @@
 			updateGists: function() {
 				this.$http.post( 'gists', { gists: this.gists_data }, function(data) {
 
-				}, {
-					emulateJSON: true
-				} );
+				});
 			},
 
 			setPage: function( page ) {

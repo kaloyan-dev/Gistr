@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function update() {
+    public function update( Request $request ) {
+
+
+    	print_r( $request );
 
     }
 }
