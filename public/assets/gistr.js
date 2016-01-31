@@ -14,10 +14,7 @@
 			loading       : true,
 			currentPage   : 1,
 			maxPages      : 1,
-			userSettings  : {
-				favorites : false,
-				sidebar   : true
-			}
+			userSettings  : {}
 		},
 
 		computed: {
@@ -46,6 +43,7 @@
 
 		ready: function() {
 			this.fetchGists();
+			this.getUserSettings();
 		},
 
 		methods: {
@@ -104,12 +102,28 @@
 				this.currentPage = page;
 			},
 
+			getUserSettings: function() {
+				this.$http.get( 'user', {}, function(data) {
+					this.userSettings = data;
+				});
+			},
+
 			toggleSidebar: function() {
 				this.userSettings.sidebar = ! this.userSettings.sidebar;
+				this.$http.post( 'user', {
+					sidebar: this.userSettings.sidebar
+				}, function(data) {
+
+				});
 			},
 
 			toggleFavorites: function() {
 				this.userSettings.favorites = ! this.userSettings.favorites;
+				this.$http.post( 'user', {
+					favorites: this.userSettings.favorites
+				}, function(data) {
+
+				});
 			},
 
 			toggleCode: function(gist) {
