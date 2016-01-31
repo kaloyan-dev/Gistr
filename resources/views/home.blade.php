@@ -16,7 +16,7 @@
 </head>
 <body id="gistr" :class="{ 'no-stripes' : search || userSettings.favorites }">
 	@if ( $user )
-		<div class="main" :class="{ 'sidebar-hidden' : ! userSettings.sidebar }">
+		<div class="main sidebar-hidden" :class="{ 'sidebar-hidden' : ! userSettings.sidebar }">
 			<div class="sidebar" v-if="! startup">
 				<a class="sidebar-toggle" href="#" @click.prevent="toggleSidebar">
 					<span class="fa" :class="{ 'fa-chevron-left' : userSettings.sidebar, 'fa-chevron-right' : ! userSettings.sidebar }"></span>
