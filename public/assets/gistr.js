@@ -14,7 +14,8 @@
 			loading       : true,
 			currentPage   : 1,
 			maxPages      : 1,
-			userSettings  : {}
+			userSettings  : {},
+			startup       : true,
 		},
 
 		computed: {
@@ -48,12 +49,11 @@
 
 		methods: {
 			reset: function() {
-				this.gists_data             = {};
-				this.search                 = '';
-				this.loading                = true;
-				this.userSettings.favorites = false;
-				this.currentPage            = 1;
-				this.maxPages               = 1;
+				this.gists_data  = {};
+				this.search      = '';
+				this.loading     = true;
+				this.currentPage = 1;
+				this.maxPages    = 1;
 			},
 
 			fetchGists: function() {
@@ -105,6 +105,7 @@
 			getUserSettings: function() {
 				this.$http.get( 'user', {}, function(data) {
 					this.userSettings = data;
+					this.startup      = false;
 				});
 			},
 
