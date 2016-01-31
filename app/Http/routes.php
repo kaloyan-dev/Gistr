@@ -19,5 +19,5 @@ Route::get('auth/github', [ 'as' => 'github-login', 'uses' => 'Auth\AuthControll
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 Route::get('auth/logout', 'Auth\AuthController@logout' );
 
-Route::get('user', 'userController@getSettings' );
-Route::post('user', 'userController@updateSettings');
+Route::get('user', 'UserController@getSettings' );
+Route::post('user', 'UserController@updateSettings');
