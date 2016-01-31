@@ -18,6 +18,12 @@ class UserController extends Controller
 		$user     = Auth::user();
 		$settings = json_decode( $user->settings );
 
+		if ( ! $settings ) {
+			$settings            = new \stdClass();
+			$settings->sidebar   = true;
+			$settings->favorites = false;
+		}
+
 		$settings->sidebar   = ( $settings->sidebar === 'true' ) ? true : false;
 		$settings->favorites = ( $settings->favorites === 'true' ) ? true : false;
 
