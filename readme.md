@@ -1,7 +1,6 @@
 ## Gistr
 
-Gistr is a project done in a couple of days for a FedEx day-like event.
-Its purpose is to provide slightly better gist management which currently includes:
+Gistr is a web application built with Laravel and Vue.js that provides slightly better gist management which currently includes:
 
 * the ability to filter the gists by search field
 * the ability to add gists to favorites and switch between all/favorite gists
