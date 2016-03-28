@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/jquery/jquery-2.1.4.min.js' ) }}"></script>
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
-<body id="gistr" :class="{ 'no-stripes' : search || userSettings.favorites }">
+<body id="gistr" :class="{ 'no-stripes' : search || userSettings.favorites }" v-cloak>
 	@if ( $user )
 		<div class="main sidebar-hidden" :class="{ 'sidebar-hidden' : ! userSettings.sidebar }">
 			<div class="sidebar" v-if="! startup">

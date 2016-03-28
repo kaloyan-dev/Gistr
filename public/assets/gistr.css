@@ -24,6 +24,8 @@ textarea { overflow: auto; }
 .left, .alignleft { float: left; display: inline; }
 .right, .alignright { float: right; display: inline; }
 
+[v-cloak] { display: none; }
+
 .shell { max-width: 960px; margin: 0 auto; padding: 0 10px; }
 
 .main { position: relative; padding: 20px 20px 0 260px; transition: padding-left 0.2s; }
