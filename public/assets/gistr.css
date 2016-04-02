@@ -90,9 +90,9 @@ textarea { overflow: auto; }
 .gist-pagination a:hover { color: #54acd0; border-color: #54acd0; position: relative; }
 .gist .gist-file { border-width: 1px 0; border-color: #d9d9d9; }
 
-.gists-per-page { position: absolute; top: 0; left: 15px; font-size: 0; line-height: 0; }
+.gists-per-page { position: absolute; top: 0; left: 5px; font-size: 0; line-height: 0; }
 .gists-per-page label { font-size: 14px; line-height: 30px; display: inline-block; vertical-align: top; color: #777; }
-.gists-per-page select { margin-left: 10px; height: 30px; font-size: 14px; line-height: 30px; padding: 0 5px; display: inline-block; vertical-align: top; cursor: pointer; color: #777; border: 1px solid #d9d9d9; }
+.gists-per-page select { margin-right: 10px; height: 30px; font-size: 14px; line-height: 30px; padding: 0 5px; display: inline-block; vertical-align: top; cursor: pointer; color: #777; border: 1px solid #d9d9d9; }
 .gists-per-page select:hover { color: #54acd0; border-color: #54acd0; }
 
 /* Loader */

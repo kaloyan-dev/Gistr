@@ -76,7 +76,6 @@
 					</div>
 					<div class="gist-pagination" v-if="showPagination">
 						<div class="gists-per-page">
-							<label>Gists per page:</label>
 							<select v-model="userSettings.per_page" @change="setPerPage">
 								<option value="5">5</option>
 								<option value="10">10</option>
@@ -84,6 +83,7 @@
 								<option value="20">20</option>
 								<option value="25">25</option>
 							</select>
+							<label>per page</label>
 						</div>
 
 						<a @click.prevent="setPage(currentPage - 1)" href="#"><em class="fa fa-angle-left"></em></a>
