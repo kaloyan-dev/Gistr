@@ -83,12 +83,17 @@ textarea { overflow: auto; }
 .gist-tools a:hover,
 .gist-tools a.gist-favorited { color: #6dcff6; }
 
-.gist-pagination { font-size: 0; line-height: 0; margin: 0 -5px; text-align: right; }
+.gist-pagination { font-size: 0; line-height: 0; margin: 0 -5px; text-align: right; position: relative; }
 .gist-pagination a { display: inline-block; vertical-align: top; color: #777; font-size: 14px; line-height: 18px; min-width: 18px; min-height: 18px; padding: 5px; border: 1px solid #d9d9d9; text-align: center; text-decoration: none; margin: 0 0 10px -1px; }
 .gist-pagination a em { display: block; line-height: 18px; }
 .gist-pagination a.active,
 .gist-pagination a:hover { color: #54acd0; border-color: #54acd0; position: relative; }
 .gist .gist-file { border-width: 1px 0; border-color: #d9d9d9; }
+
+.gists-per-page { position: absolute; top: 0; left: 15px; font-size: 0; line-height: 0; }
+.gists-per-page label { font-size: 14px; line-height: 30px; display: inline-block; vertical-align: top; color: #777; }
+.gists-per-page select { margin-left: 10px; height: 30px; font-size: 14px; line-height: 30px; padding: 0 5px; display: inline-block; vertical-align: top; cursor: pointer; color: #777; border: 1px solid #d9d9d9; }
+.gists-per-page select:hover { color: #54acd0; border-color: #54acd0; }
 
 /* Loader */
 .gists-loading { font-size: 0; line-height: 0; text-align: center; padding-top: 200px; }
@@ -169,4 +174,6 @@ textarea { overflow: auto; }
 @media screen and (max-width: 480px) {
 	.gist-buttons a { display: block; }
 	.gist-buttons a + a { margin: 10px 0 0 0; }
+	.gist-pagination { text-align: center; }
+	.gists-per-page { position: static; padding-bottom: 20px; }
 }

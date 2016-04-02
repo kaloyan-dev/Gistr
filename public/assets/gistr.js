@@ -62,7 +62,6 @@
 					this.gists_data = data;
 					this.loading    = false;
 
-					this.paginateGists( 20 );
 					this.getUserSettings();
 
 					setTimeout(function() {
@@ -78,6 +77,9 @@
 			},
 
 			paginateGists: function( perPage ) {
+				this.currentPage = 1;
+				this.maxPages    = 1;
+
 				var gistIndex = 1;
 
 				for ( var gist in this.gists_data ) {
@@ -105,10 +107,22 @@
 				this.currentPage = page;
 			},
 
+			setPerPage: function() {
+				this.paginateGists( this.userSettings.per_page );
+
+				this.$http.post( 'user', {
+					per_page: this.userSettings.per_page
+				}, function(data) {
+
+				});
+			},
+
 			getUserSettings: function() {
 				this.$http.get( 'user', {}, function(data) {
 					this.userSettings = data;
 					this.startup      = false;
+
+					this.paginateGists( this.userSettings.per_page );
 				});
 			},
 

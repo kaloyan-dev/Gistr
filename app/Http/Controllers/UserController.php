@@ -22,10 +22,12 @@ class UserController extends Controller
 			$settings            = new \stdClass();
 			$settings->sidebar   = true;
 			$settings->favorites = false;
+			$settings->per_page  = 20;
 		}
 
 		$settings->sidebar   = ( $settings->sidebar === 'true' ) ? true : false;
 		$settings->favorites = ( $settings->favorites === 'true' ) ? true : false;
+		$settings->per_page  = isset( $settings->per_page ) ? $settings->per_page : 20;
 
 		echo json_encode( $settings );
 	}
@@ -53,6 +55,11 @@ class UserController extends Controller
 		if ( $request->input('favorites') ) {
 			$settings->favorites = $request->input('favorites');
 			$user->settings      = json_encode( $settings );
+		}
+
+		if ( $request->input('per_page') ) {
+			$settings->per_page = $request->input('per_page');
+			$user->settings     = json_encode( $settings );
 		}
 
 		$user->save();
