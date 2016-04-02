@@ -62,6 +62,7 @@ class PagesController extends Controller
 				'expanded'  => $expanded,
 				'favorited' => $favorited,
 				'folders'   => $folders,
+				'page'      => 0,
 			);
 		}
 

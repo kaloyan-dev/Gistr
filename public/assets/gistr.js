@@ -44,7 +44,6 @@
 
 		ready: function() {
 			this.fetchGists();
-			this.getUserSettings();
 		},
 
 		methods: {
@@ -60,23 +59,11 @@
 				this.reset();
 
 				this.$http.get( 'gists', function ( data ) {
-
-					var gistIndex = 1;
-
-					for ( var gist in data ) {
-						
-						if ( gistIndex > 20 ) {
-							this.maxPages++;
-							gistIndex = 1;
-						}
-
-						data[gist].page = this.maxPages;
-
-						gistIndex++;
-					}
-
 					this.gists_data = data;
 					this.loading    = false;
+
+					this.paginateGists( 20 );
+					this.getUserSettings();
 
 					setTimeout(function() {
 						jQuery('code[data-gist-id]').gist();
@@ -88,6 +75,22 @@
 				this.$http.post( 'gists', { gists: this.gists_data }, function(data) {
 
 				});
+			},
+
+			paginateGists: function( perPage ) {
+				var gistIndex = 1;
+
+				for ( var gist in this.gists_data ) {
+					
+					if ( gistIndex > perPage ) {
+						this.maxPages++;
+						gistIndex = 1;
+					}
+
+					this.gists_data[gist].page = this.maxPages;
+
+					gistIndex++;
+				}
 			},
 
 			setPage: function( page ) {
