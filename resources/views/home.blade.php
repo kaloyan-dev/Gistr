@@ -15,6 +15,8 @@
 	<script type="text/javascript" src="{{ asset( 'assets/vendor/gist-embed/gist-embed.min.js' ) }}"></script>
 </head>
 <body>
+	@include( 'fork' )
+
 	@if ( $user )
 		<div id="gistr" :class="{ 'no-stripes' : search || userSettings.favorites }" v-cloak>
 			<div class="main sidebar-hidden" :class="{ 'sidebar-hidden' : ! userSettings.sidebar }">

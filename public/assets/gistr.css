@@ -58,7 +58,7 @@ textarea { overflow: auto; }
 .user-name h4 a { color: #af0000; background: #fff; display: block; vertical-align: top; border: 1px solid #d9d9d9; padding: 5px 10px; font-weight: normal; text-align: center; text-transform: uppercase; text-decoration: none; }
 .user-name h4 a:hover { background: #fee; border-color: #af0000; }
 
-.gist-search { padding: 0 0 10px; }
+.gist-search { padding: 0 70px 10px 0; }
 .gist-search input[type="text"] { border: 1px solid #d9d9d9; padding: 8px 10px; box-sizing: border-box; width: 100%; font-size: 14px; }
 .gist-search input[type="text"]:focus { color: #54acd0; border-color: #54acd0; }
 
@@ -169,6 +169,8 @@ textarea { overflow: auto; }
 	.user-image { float: left; }
 	.user-image img { width: 77px; height: 77px; margin-right: 20px; }
 	.user-name { overflow: hidden; max-width: none; margin: 0; padding: 0; }
+
+	.gist-search { padding-right: 0; }
 }
 
 @media screen and (max-width: 480px) {
