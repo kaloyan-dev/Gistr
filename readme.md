@@ -8,4 +8,4 @@ Gistr is a web application built with Laravel and Vue.js that provides slightly 
 
 ## Live Demo
 
-A live demo of the application can be found at [http://vilepixels.com/gistr/](http://vilepixels.com/gistr/) (requires GitHub login only).
+A live demo of the application can be found at [https://kaloyan.app/gistr/](https://kaloyan.app/gistr/) (requires GitHub login only).
