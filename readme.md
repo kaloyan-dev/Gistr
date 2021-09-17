@@ -1,11 +1,5 @@
-## Gistr
+## 💀
 
-Gistr is a web application built with Laravel and Vue.js that provides slightly better gist management which currently includes:
+This repository is no longer maintained. It was a fun project but as of today it contains many outdated dependencies and GitHub updated their API which breaks the login process.
 
-* the ability to filter gists by search field
-* the ability to add gists to favorites and switch between all/favorite gists
-* zero loading time pagination
-
-## Live Demo
-
-A live demo of the application can be found at [https://kaloyan.app/gistr/](https://kaloyan.app/gistr/) (requires GitHub login only).
+There's a new (non open-source for the time being) but totally free to use version of the app here: https://kaloyan.app/gistr/
